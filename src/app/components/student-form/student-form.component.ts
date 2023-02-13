@@ -45,7 +45,7 @@ export class StudentFormComponent {
   addStudent() {
     let student: Student = {
       name: this.name,
-      age: this.age,
+      age: Number(this.age),
       password: this.password,
       email: this.email,
       isActive: this.isActive 
