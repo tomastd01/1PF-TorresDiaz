@@ -1,7 +1,7 @@
 <div class="main-container">
     <app-toolbar></app-toolbar>
     <h2>Agregar estudiante</h2>
-    <app-student-form></app-student-form>
+    <app-student-form (outputStudentEvent)="addStudent($event)"></app-student-form>
     <h2>Lista de estudiantes</h2>
-    <app-list></app-list>
+    <app-list [studentsList]="studentsArray"></app-list>
 </div>

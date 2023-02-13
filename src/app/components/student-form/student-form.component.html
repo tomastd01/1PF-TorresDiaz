@@ -3,7 +3,7 @@
     <div>
         <mat-form-field class="full-width">
             <mat-label>Nombre</mat-label>
-            <input formControlName="name" matInput matNativeControl="text" placeholder="ej. Oliver Atom">
+            <input [(ngModel)]="name" formControlName="name" matInput matNativeControl="text" placeholder="ej. Oliver Atom">
             <div class=" valid" *ngIf="loginForm.controls['name'].valid">Campo valido</div>
         </mat-form-field>
     </div>
@@ -11,7 +11,7 @@
     <div>
         <mat-form-field class="full-width">
             <mat-label>Email</mat-label>
-            <input formControlName="email" matInput matNativeControl="email" placeholder="ej. rob10@gmail.com">
+            <input [(ngModel)]="email" formControlName="email" matInput matNativeControl="email" placeholder="ej. rob10@gmail.com">
             <div class="valid" *ngIf="loginForm.controls['email'].valid">Campo valido</div>
             <div class="invalid" *ngIf="loginForm.controls['email'].errors?.['pattern']">Ingresa un email valido</div>
         </mat-form-field>
@@ -19,16 +19,26 @@
 
     <div>
         <mat-form-field class="full-width">
+            <mat-label>Edad</mat-label>
+            <input [(ngModel)]="age" formControlName="age" matInput matNativeControl="number" placeholder="ej. 35">
+            <div class="valid" *ngIf="loginForm.controls['age'].valid">Campo valido</div>
+            <div class="invalid" *ngIf="loginForm.controls['age'].errors?.['max'] || loginForm.controls['age'].errors?.['min']">Debe tener de 18 y 120 años</div>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="full-width">
             <mat-label>Contraseña</mat-label>
-            <input formControlName="password" matInput matNativeControl="password">
+            <input [(ngModel)]="password" formControlName="password" matInput matNativeControl="password">
             <div class="valid" *ngIf="loginForm.controls['password'].valid">Campo valido</div>
         <div class="invalid" *ngIf="loginForm.controls['password'].errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
         </mat-form-field>
     </div>
     
     <div>
-        <mat-checkbox formControlName="isActive" type="checkbox" id="isActive">Estado del estudiante</mat-checkbox>
+        <mat-checkbox [(ngModel)]="isActive" formControlName="isActive" type="checkbox" id="isActive">Estado del estudiante</mat-checkbox>
     </div>
 
-    <button mat-flat-button color="primary" type="submit">Enviar</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid" (click)="addStudent()">Enviar</button>
+    <button mat-flat-button color="accent" type="reset">Reset</button>
 </form>
