@@ -1,25 +1,34 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()" class="" novalidate>
-    <div class="mb-3">
-        <label for="name" class="">Name:</label>
-        <input formControlName="name" type="text" id="name" class="">
-        <div class=" valid" *ngIf="loginForm.controls['name'].valid">Campo valido</div>
-    </div>
-    <div class="mb-3">
-        <label for="email" class="">Email:</label>
-        <input formControlName="email" type="text" id="email" class="">
-        <div class="valid" *ngIf="loginForm.controls['email'].valid">Campo valido</div>
-        <div class="invalid" *ngIf="loginForm.controls['email'].errors?.['pattern']">Ingresa un email valido</div>
-    </div>
-    <div class="mb-3">
-        <label for="password" class="">Password:</label>
-        <input formControlName="password" type="password" id="password" class="">
-        <div class="valid" *ngIf="loginForm.controls['password'].valid">Campo valido</div>
-        <div class="invalid" *ngIf="loginForm.controls['password'].errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
-    </div>
-    <div class="mb-3">
-        <input formControlName="isActive" type="checkbox" id="isActive" class="">
-        <label for="isActive" class="">Estado del estudiante:</label>
+<form [formGroup]="loginForm" (ngSubmit)="login()" class="form" novalidate>
+
+    <div>
+        <mat-form-field class="full-width">
+            <mat-label>Nombre</mat-label>
+            <input formControlName="name" matInput matNativeControl="text" placeholder="ej. Oliver Atom">
+            <div class=" valid" *ngIf="loginForm.controls['name'].valid">Campo valido</div>
+        </mat-form-field>
     </div>
 
-    <button type="submit" class="">Enviar</button>
+    <div>
+        <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput matNativeControl="email" placeholder="ej. rob10@gmail.com">
+            <div class="valid" *ngIf="loginForm.controls['email'].valid">Campo valido</div>
+            <div class="invalid" *ngIf="loginForm.controls['email'].errors?.['pattern']">Ingresa un email valido</div>
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input formControlName="password" matInput matNativeControl="password">
+            <div class="valid" *ngIf="loginForm.controls['password'].valid">Campo valido</div>
+        <div class="invalid" *ngIf="loginForm.controls['password'].errors?.['minlength']">La contraseña debe tener al menos 6 caracteres.</div>
+        </mat-form-field>
+    </div>
+    
+    <div>
+        <mat-checkbox formControlName="isActive" type="checkbox" id="isActive">Estado del estudiante</mat-checkbox>
+    </div>
+
+    <button mat-flat-button color="primary" type="submit">Enviar</button>
 </form>
