@@ -8,6 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StudentFormComponent } from './components/student-form/student-form.component';
+import { ListComponent } from './components/list/list.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { StudentFormComponent } from './components/student-form/student-form.com
     ToolbarComponent,
     MainComponent,
     NavbarComponent,
-    StudentFormComponent
+    StudentFormComponent,
+    ListComponent
   ],
   imports: [
     ReactiveFormsModule,

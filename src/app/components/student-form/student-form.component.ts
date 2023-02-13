@@ -14,15 +14,13 @@ export class StudentFormComponent {
     let regExUser: RegExp = /^[a-zA-Z]+[a-zA-Z0-9]+/;
 
     let controls: any = {
-      username: new FormControl("", 
+      name: new FormControl("", 
       [ 
         Validators.required, 
-        Validators.minLength(5), 
-        Validators.pattern(regExUser)
       ]),
       email: new FormControl("", [Validators.required, Validators.pattern(regExEmail)]),
       password: new FormControl("", [Validators.required, Validators.minLength(6)]),
-      rememberCredentials: new FormControl(false, [])
+      isActive: new FormControl(true, [])
     }
 
     this.loginForm = new FormGroup(controls)
