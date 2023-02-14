@@ -1,24 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Student } from 'src/app/models/student.model';
+import StudentsData from '../../../assets/data.json';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ListComponent implements OnInit{
-  @Input() studentsList!: Array<Student>;
+export class ListComponent {
+  studentsList: Student[] = StudentsData;
 
-  dataSource = new MatTableDataSource<Student>();
+  dataSource: MatTableDataSource<Student> = new MatTableDataSource<Student>(this.studentsList);
   displayedColumns: string[] = ['name', 'age', 'email', 'isActive']
-
-  ngOnInit() {
-    this.getStudentsData();
-  }
-
-  getStudentsData() {
-    let array = [...this.studentsList];
-    this.dataSource.data = [...array]
-  }
 }
